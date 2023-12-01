@@ -6,9 +6,12 @@
       apt:
         name: apache2
         state: present
+      when: ansibel_os_family ==""Debian"
     - name: i want to install webserver on nodes
       service: 
           name: apache2
           state: started
+      when: ansibel_os_family =="""Debian""
+
 
 
