@@ -1,0 +1,37 @@
+---
+- hosts: mywebservers
+  become: yes
+  tasks:
+    - name: Install apache2 on Debian systems
+      apt:
+        name: "{{mywebpackubunutu}}"
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name:i want to start webserver on ansible node
+      service:
+        name: "{{mywebpackubunutu}}"
+        state: started
+      when: ansible_os_family == "Debian"
+
+    - name: Install webserver on Redhat
+      dnf:
+        name: "{{mywebpackredhat}}"
+        state: present
+      when: ansible_os_family == "Redhat"
+
+    - name: Start webserver on Redhat
+      service:
+        name: httpd
+        state: started
+      when: ansible_os_family == "Redhat"
+    - name: start webserver on ansible modes
+      service:
+        name: "{{mynginxubuntu}}"
+        state: present
+      when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
+    - name: start webserver on nodes
+      service:
+        name: "{{mynginxredhat}}"
+        state: present
+      when: ansible_os_family=="Redhat"
