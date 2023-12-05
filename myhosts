@@ -18,3 +18,13 @@
 [mydbservers]
 173.30.0.4
 173.30.0.9
+
+[mywebservers:vars]
+var= value
+mywebpackubuntu= apache2
+mywebpackredhat= httpd
+mynginxubuntu= nginx
+mynginxredhat= nginx
+mymysqlubuntu= mysql
+mymysqlredhat= mariadb
+myphpubuntu= php-fpm
