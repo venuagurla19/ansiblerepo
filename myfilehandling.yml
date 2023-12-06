@@ -15,7 +15,7 @@
         dest: /home/ubuntu/
         remote_src: yes
     - name: download internet file
-    get_url:
-      url: http://example.com/path/file.conf  
-      dest: /home/ubuntu/https://archive.apache.org/dist/tomcat/tomcat-10/v10.0.20/bin/apache-tomcat-10.0.20.tar.gz
-      force_basic_auth: yes
+      get_url:
+        url: http://example.com/path/file.conf  
+        dest: /home/ubuntu/https://archive.apache.org/dist/tomcat/tomcat-10/v10.0.20/bin/apache-tomcat-10.0.20.tar.gz
+        force_basic_auth: yes
