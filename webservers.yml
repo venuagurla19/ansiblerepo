@@ -2,36 +2,39 @@
 - hosts: mywebservers
   become: yes
   tasks:
-    - name: Install apache2 on Debian systems
+    - name: Install Apache on Debian systems
       apt:
-        name: "{{mywebpackubunutu}}"
+        name: "{{ myapacheubunutu }}"
         state: present
       when: ansible_os_family == "Debian"
 
-    - name:i want to start webserver on ansible node
+    - name: Start Apache on Debian systems
       service:
-        name: "{{mywebpackubunutu}}"
+        name: "{{ myapacheubunutu }}"
         state: started
       when: ansible_os_family == "Debian"
 
-    - name: Install webserver on Redhat
+    - name: Install web server on Red Hat
       dnf:
-        name: "{{mywebpackredhat}}"
+        name: "{{ mywebredhat }}"
         state: present
       when: ansible_os_family == "Redhat"
 
-    - name: Start webserver on Redhat
+    - name: Start web server on Red Hat
       service:
-        name: httpd
+        name: "{{ mywebredhat }}"
         state: started
       when: ansible_os_family == "Redhat"
-    - name: start webserver on ansible modes
+
+    - name: Start Nginx on Ubuntu 18.04
       service:
-        name: "{{mynginxubuntu}}"
+        name: "{{ mynginxubuntu }}"
         state: present
       when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
-    - name: start webserver on nodes
+
+    - name: Start web server on Red Hat nodes
       service:
-        name: "{{mynginxredhat}}"
+        name: "{{ mynginxredhat }}"
         state: present
-      when: ansible_os_family=="Redhat"
+      when: ansible_os_family == "Redhat"
+

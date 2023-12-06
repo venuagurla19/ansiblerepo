@@ -1,0 +1,20 @@
+---
+- hosts: mywebservers
+  become: yes
+  vars:
+    java_package_name_ubuntu: "openjdk-11-jdk"  # Adjust with the correct package name
+    java_package_name_redhat: "java-11-openjdk"  # Adjust with the correct package name
+
+  tasks:
+    - name: Install Java on Ubuntu nodes
+      apt:
+        name: "{{ java_package_name_ubuntu }}"
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: Install Java on Red Hat nodes
+      dnf:
+        name: "{{ java_package_name_redhat }}"
+        state: present
+      when: ansible_os_family == "Redhat"
+

@@ -1,0 +1,23 @@
+- hosts: 173.30.0.9
+  become: yes
+  tasks: 
+  - name: i want to execute direct linux command
+    command: hostname -f
+    register: myfirsttaskresult
+        
+
+  - name: i want to display first task result
+    debug:
+        msg: "{{myfirsttaskresult.stdout}}"
+        
+  - name: install git
+    apt:
+      name: git
+      state: present
+    when: myfirsttaskresult.stderr !=""
+
+  - name: install wget
+    apt:
+      name: wget
+      state: present
+    when: myfirsttaskresult.stderr ==""
