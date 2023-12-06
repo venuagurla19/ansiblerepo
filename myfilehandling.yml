@@ -7,3 +7,7 @@
     apt:
       name: apache2
       state: present
+  - name: copy static file into the node side
+  copy:
+    src: staticfiles
+    dest: /home/ubuntu/staticfiles
