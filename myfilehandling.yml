@@ -13,7 +13,41 @@
       copy:
         src: mystaticfiles
         dest: /home/ubuntu/mystaticfiles
+     ---
+- hosts: 173.30.0.9
+  become: yes
+  tasks:
+    - include_tasks: myfile.yml
+
+    - name: Install webserver server
+      apt:
+        name: apache2
+        state: present
+
+    - name: Copy static files into the node side
+      copy:
+        src: mystaticfiles
+        dest: /home/ubuntu/mystaticfiles
         remote_src: yes
+
+    - name: download internet file
+      get_url:
+        url: https://archive.apache.org/dist/tomcat/tomcat-10/v10.0.20/bin/apache-tomcat-10.0.20.tar.gz
+        dest: /home/ubuntu/https://archive.apache.org/dist/tomcat/tomcat-10/v10.0.20/bin/apache-tomcat-10.0.20.tar.gz
+        force_basic_auth: yes
+      
+    - name: copy index file into node side
+      template: 
+        src: myindex.j2
+        dest: /var/www/html/index.html
+      notify: restart apache service
+
+  handlers:
+    - name: restart apache service
+      service: 
+        name: apache2
+        state: restarted
+   remote_src: yes
     - name: download internet file
       get_url:
         url: https://archive.apache.org/dist/tomcat/tomcat-10/v10.0.20/bin/apache-tomcat-10.0.20.tar.gz

@@ -4,5 +4,7 @@
       path: /home/ubuntu/myfirstfile
       state: touch
   - name: create a file
-    file: /home/ubuntu/mystaticfiles
-    state: touch
+    file:
+      path: /home/ubuntu/mystaticfiles
+      state: touch
+
