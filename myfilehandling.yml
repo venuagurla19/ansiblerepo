@@ -11,6 +11,6 @@
 
     - name: Copy static files into the node side
       copy:
-        src: staticfiles
+        src: /path/to/your/staticfiles
         dest: /home/ubuntu/
         remote_src: yes
