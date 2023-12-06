@@ -1,6 +1,7 @@
 [mywebservers]
 173.30.0.4
 173.30.0.9
+<<<<<<< HEAD
 
 [mywebappservers]
 173.30.0.4
@@ -14,3 +15,32 @@
 173.30.0.4
 173.30.0.9
 
+=======
+
+[mywebappservers]
+173.30.0.4
+173.30.0.9
+
+
+[myubuntuservers]
+173.30.0.4
+173.30.0.9
+
+[myredhatservers]
+173.30.0.4
+173.30.0.9
+
+[mydbservers]
+173.30.0.4
+173.30.0.9
+
+[mywebservers:vars]
+var= value
+mywebpackubuntu= apache2
+mywebpackredhat= httpd
+mynginxubuntu= nginx
+mynginxredhat= nginx
+mymysqlubuntu= mysql
+mymysqlredhat= mariadb
+myphpubuntu= php-fpm
+>>>>>>> 778eb241607c0cf818e5ab77a24c54e9eb5f7f2f

@@ -1,10 +1,15 @@
 ---
+<<<<<<< HEAD
 - hosts: 170.30.0.9
+=======
+- hosts: 170.30.0.4
+>>>>>>> 778eb241607c0cf818e5ab77a24c54e9eb5f7f2f
   become: yes
   vars:
     var01: git
     var02: tree
     var03: wget
+<<<<<<< HEAD
 
   tasks:
     - name: Display var01
@@ -12,3 +17,11 @@
         msg: "{{ var01 }}"
 
 
+=======
+  
+  tasks:
+  - name: i want to display vars01
+  debug:
+    msg: "{{var01}}"
+  
+>>>>>>> 778eb241607c0cf818e5ab77a24c54e9eb5f7f2f
