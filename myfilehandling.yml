@@ -25,10 +25,10 @@
       template:
         src: myindex.j2
         dest: /var/www/html/index.html
-      notify: restart apache service
+      notify: restart_apache_service  # Corrected handler name
 
   handlers:
-    - name: restart apache service
+    - name: restart_apache_service  # Corrected handler name
       service:
         name: apache2
         state: restarted
