@@ -1,6 +1,6 @@
 ---
 - name: Copy tomcat configuration files
-  hosts: your_target_group
+  hosts: 173.30.0.13
   become: yes
 
   tasks:
