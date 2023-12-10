@@ -3,28 +3,22 @@
   hosts: 173.30.0.13
   become: yes
 
-  tasks:
-    - name: Ensure destination directory exists
-      file:
-        path: /opt/tomcat/conf
-        state: directory
+- name: Copy tomcat user xml file
+  template:
+    src: template/mytomuser.j2
+    dest: /opt/tomcat/conf/tomcat-users.xml
 
-    - name: Copy tomcat user xml file
-      template:
-        src: template/mytomuser.j2
-        dest: /opt/tomcat/conf/tomcat-users.xml
+- name: Copy tomcat context xml file
+  template:
+    src: template/mytomcontext.j2
+    dest: /opt/tomcat/webapps/manager/META-INF/context.xml   
 
-    - name: Copy tomcat context xml file
-      template:
-        src: template/mytomcontext.j2
-        dest: /opt/tomcat/webapps/manager/META-INF/context.xml
+- name: Copy tomcat host context xml file
+  template:
+    src: template/mytomhostcontext.j2
+    dest: /opt/tomcat/webapps/host-manager/META-INF/context.xml
 
-    - name: Copy tomcat host context xml file
-      template:
-        src: template/mytomhostcontext.j2
-        dest: /opt/tomcat/webapps/host-manager/META-INF/context.xml
-
-    - name: Copy tomcat service xml file
-      template:
-        src: template/mytomservice.j2
-        dest: /etc/systemd/system/tomcat.service
+- name: Copy tomcat service xml file
+  template:
+    src: template/mytomservice.j2
+    dest: /etc/systemd/system/tomcat.service
