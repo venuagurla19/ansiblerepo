@@ -1,8 +1,15 @@
 ---
 - name: copy tomcat user xml file into node side
-  template:
-    src: template/mytomuser.j2
-    dest: /opt/tomcat/conf/tomcat-users.xml
+  tasks:
+    - name: Ensure destination directory exists
+      file:
+        path: /opt/tomcat/conf
+        state: directory
+
+    - name: Copy tomcat user xml file
+      template:
+        src: template/mytomuser.j2
+        dest: /opt/tomcat/conf/tomcat-users.xml
 
 - name: copy tomcat context xml file into node side
   template:
@@ -14,7 +21,7 @@
     src: template/mytomhostcontext.j2
     dest: /opt/tomcat/webapps/host-manager/META-INF/context.xml
 
-- name: copy tomcat service  xml file into node side
+- name: copy tomcat service xml file into node side
   template:
     src: template/mytomservice.j2
-    dest: /etc/systemd/system/tomcat.service   
+    dest: /etc/systemd/system/tomcat.service
