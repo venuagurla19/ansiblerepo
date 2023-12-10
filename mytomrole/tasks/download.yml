@@ -6,6 +6,7 @@
     force_basic_auth: yes
 
 - name: extract tar file
-  command: 
-      cmd: sudo tar xzvf /home/ubuntu/apache-tomcat-10.0.20.tar.gz apache-tomcat-*tar.gz -C /opt/tomcat --strip-components=1
-      creates: /opt/tomcat/LICENSE
+  become: yes  # Add this line to run the command with sudo
+  shell:
+    cmd: sudo tar xzvf /home/ubuntu/apache-tomcat-10.0.20.tar.gz -C /opt/tomcat --strip-components=1 --wildcards 'apache-tomcat-*tar.gz'
+    creates: /opt/tomcat/LICENSE
