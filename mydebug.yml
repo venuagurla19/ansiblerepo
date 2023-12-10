@@ -1,8 +1,6 @@
-<<<<<<< HEAD
+
 - hosts: 173.30.0.9
-=======
 - hosts: all
->>>>>>> 778eb241607c0cf818e5ab77a24c54e9eb5f7f2f
   become: yes
   tasks: 
   - name: i want to execute direct linux command
@@ -11,15 +9,12 @@
         
 
   - name: i want to display first task result
-<<<<<<< HEAD
     debug:
         msg: "{{myfirsttaskresult.stdout}}"
-        
-=======
+      
     debug: 
         msg: "{{myfirsttaskresult.stdout}}"
 
->>>>>>> 778eb241607c0cf818e5ab77a24c54e9eb5f7f2f
   - name: install git
     apt:
       name: git
@@ -31,7 +26,3 @@
       name: wget
       state: present
     when: myfirsttaskresult.stderr ==""
-<<<<<<< HEAD
-=======
-    
->>>>>>> 778eb241607c0cf818e5ab77a24c54e9eb5f7f2f
