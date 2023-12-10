@@ -1,6 +1,8 @@
 ---
 - hosts: mywebservers
   become: yes
-  tasks: 
-  - name: 
-  -  {role: mywebrole, when: ansible_os_family=="Debian"}
+  tasks:
+    - name: Include mywebrole for Debian
+      include_role:
+        name: mywebrole
+      when: ansible_os_family == "Debian"
