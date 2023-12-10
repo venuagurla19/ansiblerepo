@@ -6,10 +6,10 @@
         path: /opt/tomcat/conf
         state: directory
 
-    - name: Copy tomcat user xml file
-      template:
-        src: template/mytomuser.j2
-        dest: /opt/tomcat/conf/tomcat-users.xml
+- name: Copy tomcat user xml file
+    template:
+      src: template/mytomuser.j2
+      dest: /opt/tomcat/conf/tomcat-users.xml
 
 - name: copy tomcat context xml file into node side
   template:
